@@ -39,3 +39,26 @@ body {
     font-size: 18px;
 
 }
+
+.search button {
+    border: 0;
+    outline: 0;
+    background: #00feba;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.search button:hover {
+    background: #00e6a8;
+}
+
+.search button:active {
+    background: #00d49c;
+}
+.search button img {
+    width: 16px;
+}
