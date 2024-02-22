@@ -1,3 +1,24 @@
+window.addEventListener('load', function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async function(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=YOUR_OPEN_CAGE_API_KEY`);
+            const data = await response.json();
+            const city = data.results[0].components.city;
+            checkweather(city);
+        }, function(error) {
+            console.error("Error occurred while getting location: " + error.message);
+            // You can call checkweather with a default city here if getting location fails
+            checkweather("New York");
+        });
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+        // You can call checkweather with a default city here if geolocation is not supported
+        checkweather("New York");
+    }
+});
+
 const apikey = "e8065ad41ffea2b4ff635ce4c51bcde9";
 const url = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const search = document.querySelector(".search input");
